@@ -13,3 +13,5 @@ spring:
     generate-ddl: true
     properties:
       show_sql: false
+jwt:
+  secretKey: ototYDU8EdxbG9boxrJ6zRt5YFfxogeeGjYDU8EdxbG9boxrJ6zotYDU8EdxbG9boxrJ6zRt5YFfxogeeGjRt5YFfxogeeGj

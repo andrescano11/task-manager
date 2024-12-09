@@ -24,9 +24,10 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> {
                     request.requestMatchers(
-                            "/api/v*/ping",
-                            "/api/v*/auth/register/operator",
-                            "/api/v*/auth/login").permitAll();
+                                "/api/v*/ping",
+                                "/api/v*/auth/register/operator",
+                                "/api/v*/auth/login")
+                            .permitAll();
                     request.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

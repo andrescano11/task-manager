@@ -12,7 +12,6 @@ public class DemoController {
 
     @GetMapping
     public ResponseEntity<String> sayHello() {
-        String asd="asdasdasd";
-        return new ResponseEntity<>("Hello, World!", HttpStatus.OK);
+        return new ResponseEntity<>("Hola mundo!", HttpStatus.OK);
     }
 }

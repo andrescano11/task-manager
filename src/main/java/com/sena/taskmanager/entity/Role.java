@@ -18,8 +18,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-//    @ManyToMany(mappedBy = "roles")
-//    private Collection<User> users;
+    @ManyToMany(mappedBy = "roles")
+    private Collection<User> users;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "roles_privileges",

@@ -1,5 +1,6 @@
 package com.sena.taskmanager.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sena.taskmanager.util.UserStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,7 +35,9 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private UserStatus status;
+    @JsonProperty("created_at")
     private String createdAt;
+    @JsonProperty("updated_at")
     private String updatedAt;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

@@ -28,15 +28,15 @@ public class Task {
     @Id
     @GeneratedValue
     private Integer id;
-    String title;
-    String description;
-    Status status;
+    private String title;
+    private String description;
+    private Status status;
     @ManyToOne
-    User assignedTo;
+    private User assignedTo;
     @ManyToOne
-    User createdBy;
+    private User createdBy;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "task", cascade = CascadeType.ALL)
-    List<Check> checks;
+    private List<Check> checks;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "tasks_tags",
@@ -44,10 +44,10 @@ public class Task {
                     name = "task_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "tag_id", referencedColumnName = "id"))
-    List<Tag> tags;
+    private List<Tag> tags;
     @Setter(AccessLevel.PRIVATE)
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Task() {
         this.status = Status.TODO;

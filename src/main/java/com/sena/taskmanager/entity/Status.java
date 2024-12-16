@@ -1,12 +1,12 @@
 package com.sena.taskmanager.entity;
 
 public enum Status {
-    TODO("To Do"),
-    IN_PROGRESS("In Progress"),
-    REVIEW("Review"),
-    DONE("Done"),
-    CANCELED("Canceled"),
-    BLOCKED("Blocked");
+    TODO("Por hacer"),
+    IN_PROGRESS("En proceso"),
+    REVIEW("En revisión"),
+    DONE("Hecho"),
+    CANCELED("Cancelado"),
+    BLOCKED("Bloqueado");
 
     private final String value;
 

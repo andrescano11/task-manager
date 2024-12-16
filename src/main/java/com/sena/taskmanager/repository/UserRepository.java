@@ -1,6 +1,5 @@
 package com.sena.taskmanager.repository;
 
-
 import com.sena.taskmanager.entity.User;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -8,6 +8,7 @@ import com.sena.taskmanager.entity.Role;
 import com.sena.taskmanager.entity.User;
 import com.sena.taskmanager.repository.RoleRepository;
 import com.sena.taskmanager.repository.UserRepository;
+import com.sena.taskmanager.service.interfaces.IAuthenticationService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthenticationService {
+public class AuthenticationService implements IAuthenticationService {
     private final JwtService jwtService;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -27,8 +28,9 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
 
-    public AuthenticationResponse register(RegisterRequestDto request) {
-        List<Role> roles = List.of(roleRepository.getRoleByName("OPERATOR").orElseThrow(() -> new RuntimeException("Role not found")));
+    @Override
+    public AuthenticationResponse register(String userRole, RegisterRequestDto request) {
+        List<Role> roles = List.of(roleRepository.findByName(userRole.toUpperCase()).orElseThrow(() -> new RuntimeException("Rol no encontrado")));
         User user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -44,6 +46,7 @@ public class AuthenticationService {
                 .build();
     }
 
+    @Override
     public AuthenticationResponse login(LoginRequestDto request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 request.getEmail(),

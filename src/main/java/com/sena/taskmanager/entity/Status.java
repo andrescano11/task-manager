@@ -14,6 +14,15 @@ public enum Status {
         this.value = value;
     }
 
+    public static Status fromValue(String value) {
+        for (Status status : Status.values()) {
+            if (status.value.equals(value)) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("Invalid status value: " + value);
+    }
+
     public String fromValue() {
         return value;
     }

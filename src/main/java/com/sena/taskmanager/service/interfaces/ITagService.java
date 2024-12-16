@@ -8,9 +8,9 @@ public interface ITagService {
 
     List<TagDto> getAllTags();
 
-    TagDto getTagById(Long tagId);
+    TagDto getTagByName(String tagName);
 
-    TagDto updateTag(Long tagId, TagDto tagDto);
+    TagDto updateTag(String tagName, TagDto tagDto);
 
-    void deleteTag(Long tagId);
+    void deleteTag(String tagName);
 }

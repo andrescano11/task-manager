@@ -2,6 +2,8 @@ package com.sena.taskmanager.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -30,6 +32,7 @@ public class Task {
     private Integer id;
     private String title;
     private String description;
+    @Enumerated(EnumType.STRING)
     private Status status;
     @ManyToOne
     private User assignedTo;
@@ -37,7 +40,7 @@ public class Task {
     private User createdBy;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "task", cascade = CascadeType.ALL)
     private List<Check> checks;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "tasks_tags",
             joinColumns = @JoinColumn(
@@ -45,6 +48,7 @@ public class Task {
             inverseJoinColumns = @JoinColumn(
                     name = "tag_id", referencedColumnName = "id"))
     private List<Tag> tags;
+    private LocalDateTime dueDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

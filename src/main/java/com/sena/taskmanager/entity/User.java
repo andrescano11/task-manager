@@ -1,5 +1,6 @@
 package com.sena.taskmanager.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sena.taskmanager.util.UserStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,7 +11,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.util.Collection;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,7 +34,9 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private UserStatus status;
+    @JsonProperty("created_at")
     private String createdAt;
+    @JsonProperty("updated_at")
     private String updatedAt;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

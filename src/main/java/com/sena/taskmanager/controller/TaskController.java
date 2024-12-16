@@ -1,7 +1,6 @@
 package com.sena.taskmanager.controller;
 
 import com.sena.taskmanager.dto.TaskDto;
-import com.sena.taskmanager.entity.Task;
 import com.sena.taskmanager.service.interfaces.ITaskService;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;

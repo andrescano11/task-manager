@@ -45,7 +45,6 @@ public class Task {
             inverseJoinColumns = @JoinColumn(
                     name = "tag_id", referencedColumnName = "id"))
     private List<Tag> tags;
-    @Setter(AccessLevel.PRIVATE)
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

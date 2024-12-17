@@ -25,7 +25,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(request -> {
                     request.requestMatchers(
                                 "/api/v*/ping",
-                                "/api/v*/auth/register/operator",
+                                "/api/v*/auth/register",
                                 "/api/v*/auth/login")
                             .permitAll();
                     request.anyRequest().authenticated();

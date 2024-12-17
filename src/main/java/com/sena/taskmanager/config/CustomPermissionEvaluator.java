@@ -53,7 +53,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         return hasPrivilege(auth, entityType, action);
     }
 
-    public boolean canCreateUserByRole(Authentication auth, String role) {
+    private boolean canCreateUserByRole(Authentication auth, String role) {
         Optional<Role> userRole = roleRepository.findByName(auth.getAuthorities().stream().findFirst().get().toString());
         Optional<Role> requestedRole = roleRepository.findByName(role);
         if (userRole.isPresent() && requestedRole.isPresent() && userRole.get().getId() >= requestedRole.get().getId()) {
